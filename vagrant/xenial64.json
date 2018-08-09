@@ -121,12 +121,12 @@
     {
       "execute_command": "echo 'vagrant' | {{.Vars}} sudo -H -E -S bash '{{.Path}}'",
       "expect_disconnect": true,
-      "script": "scripts/packages.sh",
+      "script": "../scripts/packages.sh",
       "type": "shell"
     },
     {
       "execute_command": "echo 'vagrant' | {{.Vars}} sudo -H -E -S bash '{{.Path}}'",
-      "script": "scripts/vagrant.sh",
+      "script": "../scripts/vagrant.sh",
       "type": "shell"
     },
     {
@@ -135,8 +135,8 @@
       ],
       "execute_command": "echo 'vagrant' | {{.Vars}} sudo -H -E -S bash '{{.Path}}'",
       "scripts": [
-        "scripts/virtualbox.sh",
-        "scripts/virtualbox_cleanup.sh"
+        "../scripts/virtualbox.sh",
+        "../scripts/virtualbox_cleanup.sh"
       ],
       "type": "shell"
     },
@@ -146,8 +146,8 @@
       ],
       "execute_command": "echo 'vagrant' | {{.Vars}} sudo -H -E -S bash '{{.Path}}'",
       "scripts": [
-        "scripts/vmware.sh",
-        "scripts/vmware_cleanup.sh"
+        "../scripts/vmware.sh",
+        "../scripts/vmware_cleanup.sh"
       ],
       "type": "shell"
     }

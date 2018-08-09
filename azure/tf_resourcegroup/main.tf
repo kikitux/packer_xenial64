@@ -1,7 +1,5 @@
-# Create a VM
-
 variable "prefix" {
-  default = "alvaro"
+  default = "daniele"
 }
 
 variable "datacenter" {
@@ -41,3 +39,8 @@ resource "azurerm_resource_group" "terraformgroup" {
     environment = "${var.prefix} Terraform Demo"
   }
 }
+
+output "ResourceGroup" {
+  value = "${format("terraform import azurerm_resource_group.terraformgroup %s",azurerm_resource_group.terraformgroup.id)}"
+}
+

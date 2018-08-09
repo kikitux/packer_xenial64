@@ -4,8 +4,8 @@
       "client_secret": "{{env `ARM_CLIENT_SECRET` }}",
       "tenant_id": "{{env `ARM_TENANT_ID`}}",
       "subscription_id": "{{env `ARM_SUBSCRIPTION_ID`}}",
-      "resource_group_name": "alvaroResourceGroup",
-      "image_name": "alvaroXenial64"
+      "resource_group_name": "{{env `prefix`}}ResourceGroup",
+      "image_name": "Xenial64"
     },
     "builders": [
       {

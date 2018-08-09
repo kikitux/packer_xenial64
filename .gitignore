@@ -8,3 +8,6 @@ priv/
 
 .terraform
 *.tfstate*
+
+Gemfile
+Gemfile.lock
