@@ -43,4 +43,3 @@ resource "azurerm_resource_group" "terraformgroup" {
 output "ResourceGroup" {
   value = "${format("terraform import azurerm_resource_group.terraformgroup %s",azurerm_resource_group.terraformgroup.id)}"
 }
-

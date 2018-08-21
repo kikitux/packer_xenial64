@@ -6,6 +6,33 @@ chefdk-2.5.3-1.dmg
 
 gem install kitchen-azurerm
 
+# variables
+
+```
+export ARM_SUBSCRIPTION_ID=<id>
+export ARM_CLIENT_ID=<id>
+export ARM_CLIENT_SECRET=<id>
+export ARM_TENANT_ID=<id>
+
+export TF_VAR_ARM_SUBSCRIPTION_ID=${ARM_SUBSCRIPTION_ID}
+export TF_VAR_ARM_CLIENT_ID=${ARM_CLIENT_ID}
+export TF_VAR_ARM_CLIENT_SECRET=${ARM_CLIENT_SECRET}
+export TF_VAR_ARM_TENANT_ID=${ARM_TENANT_ID}
+
+export prefix=alvaro
+export TF_VAR_prefix=${prefix}
+
+export AZURE_CLIENT_ID=${ARM_CLIENT_ID}
+export AZURE_CLIENT_SECRET=${ARM_CLIENT_SECRET}
+export AZURE_TENANT_ID=${ARM_TENANT_ID}
+```
+
+## build
+
+`packer build xenial_azure.json`
+
+## test
+
 ### sample run
 
 ```

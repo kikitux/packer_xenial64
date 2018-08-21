@@ -37,7 +37,7 @@
       },
       {
         "execute_command": "chmod +x {{ .Path }}; {{ .Vars }} sudo -H -E sh '{{ .Path }}'",
-        "script": "scripts/azure_cleanup.sh",
+        "script": "../scripts/azure_cleanup.sh",
         "type": "shell"
       }
     ]

@@ -1,5 +1,5 @@
 packer_cache/
-output-*/*
+output-*/
 priv/
 .vagrant/
 .kitchen/
@@ -11,3 +11,4 @@ priv/
 
 Gemfile
 Gemfile.lock
+.ruby-version
