@@ -24,27 +24,36 @@ apt-get install -y linux-generic linux-image-generic ${APTARGS}
 # build-essential
 apt-get install -y build-essential ${APTARGS}
 
-# ruby
-apt-get install -y ruby ruby-dev ${APTARGS}
+# for docker devicemapper
+apt-get install -y thin-provisioning-tools ${APTARGS}
 
-# inspec
-gem install inspec
+# some tools
+apt-get install -y ${APTARGS} python-pip python3-pip git jq curl wget vim language-pack-en sysstat htop
+apt-get install -y ${APTARGS} ruby ruby-dev
 
-# pip
-apt-get install -y python-pip ${APTARGS}
-apt-get install -y python3-pip ${APTARGS}
+# prep for LXD
+cat > /etc/security/limits.d/lxd.conf <<EOF
+* soft nofile 1048576
+* hard nofile 1048576
+root soft nofile 1048576
+root hard nofile 1048576
+* soft memlock unlimited
+* hard memlock unlimited
+EOF
 
-# git
-apt-get install -y git ${APTARGS}
+cat > /etc/sysctl.conf <<EOF
+fs.inotify.max_queued_events=1048576
+fs.inotify.max_user_instances=1048576
+fs.inotify.max_user_watches=1048576
+vm.max_map_count=262144
+kernel.dmesg_restrict=1
+net.ipv4.neigh.default.gc_thresh3=8192
+net.ipv6.neigh.default.gc_thresh3=8192
+EOF
 
-# jq
-apt-get install -y jq ${APTARGS}
-
-# curl
-apt-get install -y curl ${APTARGS}
-
-# wget
-apt-get install -y wget ${APTARGS}
+# container top
+wget https://github.com/bcicen/ctop/releases/download/v0.7.1/ctop-0.7.1-linux-amd64 -O /usr/local/bin/ctop
+chmod +x /usr/local/bin/ctop
 
 # Hide Ubuntu splash screen during OS Boot, so you can see if the boot hangs
 apt-get remove -y plymouth-theme-ubuntu-text

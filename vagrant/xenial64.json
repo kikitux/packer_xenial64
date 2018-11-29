@@ -4,9 +4,7 @@
     "build_name": "xenial64",
     "build_cpu_cores": "2",
     "build_memory": "1024",
-    "cpu_cores": "1",
-    "memory": "512",
-    "disk_size": "40960",
+    "disk_size": "102400",
     "headless": "false",
     "iso_checksum": "c94de1cc2e10160f325eb54638a5b5aa38f181d60ee33dae9578d96d932ee5f8",
     "iso_checksum_type": "sha256",
@@ -53,11 +51,6 @@
         "ethernet0.present": "TRUE",
         "ethernet0.virtualdev": "e1000",
         "ethernet0.wakeonpcktrcv": "FALSE"
-      },
-      "vmx_data_post": {
-        "cpuid.coresPerSocket": "1",
-        "memsize": "{{user `memory`}}",
-        "numvcpus": "{{user `cpu_cores`}}"
       }
     },
     {
@@ -98,20 +91,6 @@
           "{{.Name}}",
           "--cpus",
           "{{user `build_cpu_cores`}}"
-        ]
-      ],
-      "vboxmanage_post": [
-        [
-          "modifyvm",
-          "{{.Name}}",
-          "--memory",
-          "{{user `memory`}}"
-        ],
-        [
-          "modifyvm",
-          "{{.Name}}",
-          "--cpus",
-          "{{user `cpu_cores`}}"
         ]
       ],
       "virtualbox_version_file": ".vbox_version"
@@ -165,8 +144,7 @@
           "{{ user `build_name` }}-vbox"
         ],
         "inline": [
-          "vagrant box add --name {{ user `build_name` }} --provider virtualbox {{ user `build_name` }}-vbox.box -f",
-          "kitchen test vbox"
+          "vagrant box add --name {{ user `build_name` }} --provider virtualbox {{ user `build_name` }}-vbox.box -f"
         ]
       },
       {
@@ -175,8 +153,7 @@
           "{{ user `build_name` }}-vmware"
         ],
         "inline": [
-          "vagrant box add --name {{ user `build_name` }} --provider vmware_desktop {{ user `build_name` }}-vmware.box -f",
-          "kitchen test vmware"
+          "vagrant box add --name {{ user `build_name` }} --provider vmware_desktop {{ user `build_name` }}-vmware.box -f"
         ]
       }
     ]
